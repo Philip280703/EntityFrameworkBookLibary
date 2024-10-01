@@ -62,16 +62,16 @@ namespace EFBooksOpgave.DbAccess
             // Step 1: Create 10 loaners with real names
             var loaners = new List<Loaner>
         {
-            new Loaner { Name = "John Doe" },
-            new Loaner { Name = "Jane Smith" },
-            new Loaner { Name = "Michael Johnson" },
-            new Loaner { Name = "Emily Davis" },
-            new Loaner { Name = "William Brown" },
-            new Loaner { Name = "Sophia Wilson" },
-            new Loaner { Name = "James Garcia" },
-            new Loaner { Name = "Mia Martinez" },
-            new Loaner { Name = "David Miller" },
-            new Loaner { Name = "Olivia Anderson" }
+            new Loaner { Name = "Jane Doe" },
+            new Loaner { Name = "Liam Smith" },
+            new Loaner { Name = "Michael Jackson" },
+            new Loaner { Name = "Emily Reed" },
+            new Loaner { Name = "Mr Brown" },
+            new Loaner { Name = "Owen Wilson" },
+            new Loaner { Name = "James Smith" },
+            new Loaner { Name = "Julio Martinez" },
+            new Loaner { Name = "David Hesselhof" },
+            new Loaner { Name = "Olivia Seebach" }
         };
 
             db.Loaners.AddRange(loaners);
@@ -148,6 +148,52 @@ namespace EFBooksOpgave.DbAccess
         //    }
 
         //}
+
+        public void SeedExpandedData()
+        {
+            Console.WriteLine("Seeding real Authors and Books...");
+
+            var db = new MyDbContext();
+
+            List<Author> newAuthors = new List<Author>
+            {
+                new Author { Name = "Cormac McCarthy" },
+                new Author { Name = "Yuval Noah Harari" },
+                new Author { Name = "Paulo Coelho" },
+                new Author { Name = "Paula Hawkins" },
+                new Author { Name = "Gillian Flynn" },
+                new Author { Name = "Erin Morgenstern" },
+                new Author { Name = "Markus Zusak" },
+                new Author { Name = "Tara Westover" },
+                new Author { Name = "Michelle Obama" },
+                new Author { Name = "Frank Herbert" }
+
+               
+        };
+            db.Authors.AddRange(newAuthors);
+            db.SaveChanges(); // Save authors to generate their IDs
+
+
+
+
+            List<Book> newBooks = new List<Book>
+            {
+                new Book { Title = "The Road", NumberOfCopies = 7, AuthorId = 11, Price = 13.99, Genre = "Post-Apocalyptic", NumOfPages = 287, PublicationDate = new DateTime(2006, 9, 26) },
+                new Book { Title = "Sapiens: A Brief History of Humankind", NumberOfCopies = 10, AuthorId = 12, Price = 21.99, Genre = "Non-fiction", NumOfPages = 443, PublicationDate = new DateTime(2011, 9, 4) },
+                new Book { Title = "The Alchemist", NumberOfCopies = 8, AuthorId = 13, Price = 15.99, Genre = "Adventure", NumOfPages = 208, PublicationDate = new DateTime(1988, 4, 25) },
+                new Book { Title = "The Girl on the Train", NumberOfCopies = 9, AuthorId = 14, Price = 12.99, Genre = "Thriller", NumOfPages = 395, PublicationDate = new DateTime(2015, 1, 13) },
+                new Book { Title = "Gone Girl", NumberOfCopies = 10, AuthorId = 15, Price = 14.99, Genre = "Thriller", NumOfPages = 422, PublicationDate = new DateTime(2012, 6, 5) },
+                new Book { Title = "The Night Circus", NumberOfCopies = 6, AuthorId = 16, Price = 18.99, Genre = "Fantasy", NumOfPages = 387, PublicationDate = new DateTime(2011, 9, 13) },
+                new Book { Title = "The Book Thief", NumberOfCopies = 8, AuthorId = 17, Price = 16.99, Genre = "Historical Fiction", NumOfPages = 552, PublicationDate = new DateTime(2005, 3, 14) },
+                new Book { Title = "Educated", NumberOfCopies = 9, AuthorId = 18, Price = 17.99, Genre = "Memoir", NumOfPages = 334, PublicationDate = new DateTime(2018, 2, 20) },
+                new Book { Title = "Becoming", NumberOfCopies = 12, AuthorId = 19, Price = 22.99, Genre = "Memoir", NumOfPages = 448, PublicationDate = new DateTime(2018, 11, 13) },
+                new Book { Title = "Dune", NumberOfCopies = 11, AuthorId = 20, Price = 19.99, Genre = "Science Fiction", NumOfPages = 688, PublicationDate = new DateTime(1965, 8, 1) }
+            };
+
+            db.Books.AddRange(newBooks);
+            db.SaveChanges(); // Save books to the database
+
+        }
 
 
 

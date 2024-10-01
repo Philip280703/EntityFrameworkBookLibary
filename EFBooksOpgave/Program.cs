@@ -5,7 +5,6 @@ MyDbContext db = new MyDbContext();
 
 
 
-
 DbHandler handler = new DbHandler();
 
 //handler.printBooks();
