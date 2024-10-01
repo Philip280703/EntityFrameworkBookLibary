@@ -17,6 +17,8 @@ namespace EFBooksOpgave.Models
         public int Stars { get; set; }
         public DateTime ReviewDate { get; set; }
 
+        public Book book { get; set; }
+
         public Review() { }
 
         public Review(string name = " ")

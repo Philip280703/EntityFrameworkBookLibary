@@ -195,7 +195,27 @@ namespace EFBooksOpgave.DbAccess
 
         }
 
+        public void SeedReviews()
+        {
+            var db = new MyDbContext(); // Replace with your actual DbContext
 
+            var reviews = new List<Review>
+        {
+            new Review { FirstName = "Lily", LastName = "Scott", Email = "lilyscott@example.com", Stars = 4,  = 11, ReviewDate = new DateTime(2024, 09, 30) },
+            new Review { FirstName = "Oliver", LastName = "King", Email = "oliverking@example.com", Stars = 5, BookId = 12, ReviewDate = new DateTime(2024, 10, 01) },
+            new Review { FirstName = "Sophia", LastName = "Reed", Email = "sophiareed@example.com", Stars = 3, BookId = 13, ReviewDate = new DateTime(2024, 10, 02) },
+            new Review { FirstName = "James", LastName = "Perry", Email = "jamesperry@example.com", Stars = 2, BookId = 14, ReviewDate = new DateTime(2024, 10, 03) },
+            new Review { FirstName = "Isabella", LastName = "Wright", Email = "isabellawright@example.com", Stars = 4, BookId = 15, ReviewDate = new DateTime(2024, 10, 04) },
+            new Review { FirstName = "Lucas", LastName = "Harris", Email = "lucasharris@example.com", Stars = 5, BookId = 16, ReviewDate = new DateTime(2024, 10, 05) },
+            new Review { FirstName = "Mia", LastName = "Walker", Email = "miawalker@example.com", Stars = 3, BookId = 17, ReviewDate = new DateTime(2024, 10, 06) },
+            new Review { FirstName = "Ethan", LastName = "Lewis", Email = "ethanlewis@example.com", Stars = 4, BookId = 18, ReviewDate = new DateTime(2024, 10, 07) },
+            new Review { FirstName = "Charlotte", LastName = "Young", Email = "charlotteyoung@example.com", Stars = 5, BookId = 1, ReviewDate = new DateTime(2024, 10, 08) },
+            new Review { FirstName = "Aiden", LastName = "Hall", Email = "aidenhall@example.com", Stars = 2, BookId = 2, ReviewDate = new DateTime(2024, 10, 09) }
+        };
+
+            db.Reviews.AddRange(reviews);
+            db.SaveChanges();
+        }
 
     }
 }
