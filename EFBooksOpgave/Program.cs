@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 
 MyDbContext db = new MyDbContext();
 
-SeedData sd = new SeedData();
 
 DbHandler handler = new DbHandler();
 

@@ -201,7 +201,7 @@ namespace EFBooksOpgave.DbAccess
 
             var reviews = new List<Review>
         {
-            new Review { FirstName = "Lily", LastName = "Scott", Email = "lilyscott@example.com", Stars = 4,  = 11, ReviewDate = new DateTime(2024, 09, 30) },
+            new Review { FirstName = "Lily", LastName = "Scott", Email = "lilyscott@example.com", Stars = 4,  BookId = 11, ReviewDate = new DateTime(2024, 09, 30) },
             new Review { FirstName = "Oliver", LastName = "King", Email = "oliverking@example.com", Stars = 5, BookId = 12, ReviewDate = new DateTime(2024, 10, 01) },
             new Review { FirstName = "Sophia", LastName = "Reed", Email = "sophiareed@example.com", Stars = 3, BookId = 13, ReviewDate = new DateTime(2024, 10, 02) },
             new Review { FirstName = "James", LastName = "Perry", Email = "jamesperry@example.com", Stars = 2, BookId = 14, ReviewDate = new DateTime(2024, 10, 03) },
