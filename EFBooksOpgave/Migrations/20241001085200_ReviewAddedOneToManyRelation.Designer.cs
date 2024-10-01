@@ -4,6 +4,7 @@ using EFBooksOpgave.DbAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFBooksOpgave.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241001085200_ReviewAddedOneToManyRelation")]
+    partial class ReviewAddedOneToManyRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,9 +72,6 @@ namespace EFBooksOpgave.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NextInSeriesId")
-                        .HasColumnType("int");
-
                     b.Property<int>("NumOfPages")
                         .HasColumnType("int");
 
@@ -91,8 +91,6 @@ namespace EFBooksOpgave.Migrations
                     b.HasKey("BookId");
 
                     b.HasIndex("AuthorId");
-
-                    b.HasIndex("NextInSeriesId");
 
                     b.ToTable("Books");
                 });
@@ -137,9 +135,6 @@ namespace EFBooksOpgave.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ReviewDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Stars")
                         .HasColumnType("int");
 
@@ -173,13 +168,7 @@ namespace EFBooksOpgave.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EFBooksOpgave.Models.Book", "NextInSeries")
-                        .WithMany()
-                        .HasForeignKey("NextInSeriesId");
-
                     b.Navigation("Author");
-
-                    b.Navigation("NextInSeries");
                 });
 
             modelBuilder.Entity("EFBooksOpgave.Models.Review", b =>

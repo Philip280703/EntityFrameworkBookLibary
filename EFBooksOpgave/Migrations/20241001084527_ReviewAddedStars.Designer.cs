@@ -4,6 +4,7 @@ using EFBooksOpgave.DbAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFBooksOpgave.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241001084527_ReviewAddedStars")]
+    partial class ReviewAddedStars
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,9 +72,6 @@ namespace EFBooksOpgave.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NextInSeriesId")
-                        .HasColumnType("int");
-
                     b.Property<int>("NumOfPages")
                         .HasColumnType("int");
 
@@ -91,8 +91,6 @@ namespace EFBooksOpgave.Migrations
                     b.HasKey("BookId");
 
                     b.HasIndex("AuthorId");
-
-                    b.HasIndex("NextInSeriesId");
 
                     b.ToTable("Books");
                 });
@@ -122,9 +120,6 @@ namespace EFBooksOpgave.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
 
-                    b.Property<int?>("BookId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -137,15 +132,10 @@ namespace EFBooksOpgave.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ReviewDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Stars")
                         .HasColumnType("int");
 
                     b.HasKey("ReviewId");
-
-                    b.HasIndex("BookId");
 
                     b.ToTable("Reviews");
                 });
@@ -173,30 +163,12 @@ namespace EFBooksOpgave.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EFBooksOpgave.Models.Book", "NextInSeries")
-                        .WithMany()
-                        .HasForeignKey("NextInSeriesId");
-
                     b.Navigation("Author");
-
-                    b.Navigation("NextInSeries");
-                });
-
-            modelBuilder.Entity("EFBooksOpgave.Models.Review", b =>
-                {
-                    b.HasOne("EFBooksOpgave.Models.Book", null)
-                        .WithMany("Reviews")
-                        .HasForeignKey("BookId");
                 });
 
             modelBuilder.Entity("EFBooksOpgave.Models.Author", b =>
                 {
                     b.Navigation("BooksWritten");
-                });
-
-            modelBuilder.Entity("EFBooksOpgave.Models.Book", b =>
-                {
-                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

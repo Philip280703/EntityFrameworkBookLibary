@@ -48,10 +48,6 @@ books.ForEach(b =>
 
 
 
-
-
-
-
 ////----------------------------------------------------------
 //// insert seed data to database - only use once
 //var seeder = new SeedData();
